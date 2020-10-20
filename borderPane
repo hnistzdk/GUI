@@ -1,0 +1,36 @@
+package Study.Java_GUI;/**
+ * @Description
+ * @Author zdk
+ * @Date 2020/10/20 18:35
+ */
+
+import javafx.application.Application;
+import javafx.geometry.*;
+import javafx.scene.*;
+import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+public class borderPane extends Application {
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        BorderPane borderPane=new BorderPane();
+        borderPane.setPadding(new Insets(10));//设置边界面板边缘内侧空白距离均为10像素
+        Button bt=new Button("顶部状态栏");
+        bt.setPrefSize(280,20);
+        borderPane.setTop(bt);//将按钮放在边界面板的顶部区域
+        borderPane.setBottom(new Button("底部状态栏"));//放在底部,按钮使用默认尺寸
+        borderPane.setLeft(new Button("左部导航菜单"));//放在左部
+        borderPane.setRight(new Button("显示信息"));//放在右部
+        borderPane.setCenter(new Button("中间工作区"));//放在中央区域
+        Scene scene=new Scene(borderPane,500,500);
+        primaryStage.setTitle("边界式面板");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+}
