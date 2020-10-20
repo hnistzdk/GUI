@@ -1,0 +1,58 @@
+package Study.Java_GUI;
+/**
+ * @Description
+ * @Author zdk
+ * @Date 2020/10/20 19:37
+ */
+
+import javafx.application.Application;
+import javafx.geometry.*;
+import javafx.scene.*;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+
+public class image extends Application {
+
+    public static void main(String[] args) {launch(args);}
+
+    @Override
+    public void start(Stage primaryStage) {
+        //本地图片地址前一定要加上file:
+        Image im1=new Image("file:C:\\Users\\fengzhu\\Desktop\\image\\22.png");//创建图像对象im1
+        ImageView iv1=new ImageView(im1);//创建显示图像对象iv1
+        Button bt1=new Button("beautiful",iv1);
+        Button bt2=new Button("good",
+                new ImageView("file:C:\\Users\\fengzhu\\Desktop\\image\\22.png"));
+        HBox box=new HBox(20);//创建其上组件间距为20像素的水平面板
+        box.getChildren().addAll(bt1,bt2);
+        box.setAlignment(Pos.CENTER);//设置水平面板的节点居中对齐
+
+        Image im2=new Image("file:C:\\Users\\fengzhu\\Desktop\\image\\22.png");
+        ImageView iv2=new ImageView();
+        iv2.setImage(im2);//将图像对im2设置到显示图像对象iv2上
+        iv2.setFitWidth(115);//设置图像视图的宽度为115
+        iv2.setPreserveRatio(true);//设置是否保持缩放比例
+        iv2.setSmooth(true);//设置是否平滑显示图像
+        iv2.setCache(true);//设置是否缓冲以提高性能
+
+        ImageView iv3=new ImageView();
+        iv3.setImage(im2);
+        iv3.setRotate(90);//将显示图像对象顺时针旋转90度
+        iv3.setFitWidth(115);
+        iv3.setPreserveRatio(true);
+
+        BorderPane rootPane=new BorderPane();//创建边界面板对象rootPane作为根面板
+        rootPane.setBottom(box);//将水平面板添加到根面板的底部
+        rootPane.setCenter(iv2);
+        rootPane.setRight(iv3);
+
+        Scene scene=new Scene(rootPane,400,400);
+        primaryStage.setTitle("图像显示");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+}
