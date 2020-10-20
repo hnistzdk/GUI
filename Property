@@ -1,0 +1,38 @@
+package Study.Java_GUI;/**
+ * @Description
+ * @Author zdk
+ * @Date 2020/10/20 20:48
+ */
+
+import javafx.application.Application;
+import javafx.scene.*;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+//属性绑定指在两个绑定属性之间建立起一种绑定关系，源对象的绑定属性变了，目标对象的也会变
+public class Property extends Application {
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        Pane pane=new Pane();
+        Circle c=new Circle();
+        c.setCenterX(100);
+        c.setCenterY(100);
+        //将圆c的centerX和centerY属性分别绑定在面板pane宽度和高度的一半上
+        //若将28,29行注释掉 缩放窗口时圆的圆心位置就不会随窗口的变化而变化了
+        c.centerXProperty().bind(pane.widthProperty().divide(2));
+        c.centerYProperty().bind(pane.heightProperty().divide(2));
+        c.setRadius(50);
+        c.setFill(Color.BLACK);
+        pane.getChildren().add(c);
+        Scene scene=new Scene(pane,200,200);
+        primaryStage.setTitle("圆的绑定属性");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+}
