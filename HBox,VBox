@@ -1,0 +1,38 @@
+package Study.Java_GUI;
+/**
+ * @Description
+ * @Author zdk
+ * @Date 2020/10/20 18:55
+ */
+
+import javafx.application.Application;
+import javafx.geometry.*;
+import javafx.scene.*;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+
+//单行(HBox)和单列(VBox)面板
+public class hBox extends Application {
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    Button bt1=new Button("上一步");
+    Button bt2=new Button("下一步");
+    @Override
+    public void start(Stage primaryStage) {
+        HBox hBox=new HBox();//创建单行面板对象
+        bt1.setPrefSize(100, 100);
+        //设置bt1四周边缘外侧空白距离
+        hBox.setMargin(bt1,new Insets(5,5,5,5));
+        bt2.setPrefSize(110, 110);
+        hBox.setMargin(bt2,new Insets(10));//同bt1
+        hBox.getChildren().addAll(bt1,bt2);
+        Scene scene=new Scene(hBox,300, 200);
+        primaryStage.setTitle("单行面板");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+}
