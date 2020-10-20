@@ -21,16 +21,17 @@ public class TestGUI extends Application {
         StackPane stackPane=new StackPane();
         bt.setStyle("-fx-border-color:blue");
         Button bt1=new Button("我也是按钮");
-        bt1.setPrefSize(80,50);
-        bt1.setStyle("-fx-border-color:green");
-        bt1.setRotate(-45);
+        bt1.setPrefSize(80,50);//设置按钮的优先级大小
+        bt1.setStyle("-fx-border-color:green");//设置按钮的边框颜色为绿色
+        bt1.setRotate(-45);//逆时针旋转45度
         stackPane.setPrefSize(100, 100);
-        stackPane.getChildren().addAll(bt1,bt);
-        stackPane.setRotate(45);
+        stackPane.getChildren().addAll(bt1,bt);//将按钮加入面板
+        stackPane.setRotate(45);//顺时针旋转45度
+        //面板边框设为灰色
         stackPane.setStyle("-fx-border-color:red;-fx-background-color:lightgray");
         Scene scene=new Scene(stackPane,210,210);
-        primaryStage.setTitle("栈面板");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        primaryStage.setTitle("栈面板");//设置窗口的标题
+        primaryStage.setScene(scene);//将场景放入主舞台
+        primaryStage.show();//展示
     }
 }
