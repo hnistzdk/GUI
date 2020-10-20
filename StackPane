@@ -1,0 +1,36 @@
+package Study.Java_GUI;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+/**
+ * @Description
+ * @Author zdk
+ * @Date 2020/10/18 20:10
+ */
+//节点放面板中 面板放场景中
+//GUI- Graphic User Interface 图形用户界面
+public class TestGUI extends Application {
+    @Override//强调必须覆盖下面这个父类中的方法
+    public void start(Stage primaryStage)
+    {
+        Button bt=new Button("我是按钮");
+        StackPane stackPane=new StackPane();
+        bt.setStyle("-fx-border-color:blue");
+        Button bt1=new Button("我也是按钮");
+        bt1.setPrefSize(80,50);
+        bt1.setStyle("-fx-border-color:green");
+        bt1.setRotate(-45);
+        stackPane.setPrefSize(100, 100);
+        stackPane.getChildren().addAll(bt1,bt);
+        stackPane.setRotate(45);
+        stackPane.setStyle("-fx-border-color:red;-fx-background-color:lightgray");
+        Scene scene=new Scene(stackPane,210,210);
+        primaryStage.setTitle("栈面板");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+}
