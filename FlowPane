@@ -22,10 +22,11 @@ public class flowPane extends Application {
     @Override
     public void start(Stage primaryStage) {
         FlowPane flowPane=new FlowPane();
-        flowPane.setOrientation(Orientation.HORIZONTAL);
+        flowPane.setOrientation(Orientation.HORIZONTAL);//设置节点水平摆放
+        //设置面板边缘内侧四周空白的距离
         flowPane.setPadding(new Insets(12, 13, 14, 15));
-        flowPane.setHgap(8);
-        flowPane.setVgap(5);
+        flowPane.setHgap(8);//设置面板上节点之间的水平间距为8像素
+        flowPane.setVgap(5);//设置面板上节点之间的垂直间距为5像素
         for(int i=0;i<6;i++)
         {
             bt[i]=new Button("按钮"+(i+1));
