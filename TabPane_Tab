@@ -1,0 +1,44 @@
+package Study.Java_GUI;
+/**
+ * @Description
+ * @Author zdk
+ * @Date 2020/10/21 19:29
+ */
+
+import javafx.application.Application;
+import javafx.scene.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+
+public class TabPane_Tab extends Application {
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        TabPane tabPane=new TabPane();
+        Tab tab1=new Tab();
+        tab1.setText("第一个选项卡");
+        tab1.setClosable(false);//设置选项卡是否可以被关闭
+        tab1.setContent(new Circle(200,200,30, Color.PINK));
+        Tab tab2=new Tab("第二个选项卡");
+        Image imb=new Image("file:C:\\Users\\fengzhu\\Desktop\\image\\22.png");
+        ImageView iv=new ImageView(imb);
+        iv.setFitHeight(115);//设置图像视图的高度为115像素
+        iv.setPreserveRatio(true);//设置保持缩放比例
+        tab2.setContent(new Label("",iv));//将含有图像的标签添加到选项卡tab2上
+        tabPane.getTabs().addAll(tab1,tab2);//将选项卡添加到选项卡面板上
+        Scene scene=new Scene(tabPane,230,115);
+        primaryStage.setTitle("选项卡面板与选项卡");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+}
