@@ -1,0 +1,61 @@
+package Study.Java_GUI;
+/**
+ * @Description
+ * @Author zdk
+ * @Date 2020/10/21 18:53
+ */
+
+import javafx.application.Application;
+import javafx.geometry.*;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class CheckBox_RadioButton extends Application {
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    final CheckBox chk1=new CheckBox("斜体");//创建复选框
+    final CheckBox chk2=new CheckBox("粗体");
+    final CheckBox chk3=new CheckBox("楷体");
+    final RadioButton rb1=new RadioButton("红色");//创建单选按钮
+    final RadioButton rb2=new RadioButton("绿色");
+    final RadioButton rb3=new RadioButton("蓝色");
+    final Button bt1=new Button("确认");
+    final Button bt2=new Button("取消");
+    final TextArea ta=new TextArea("我是文本区");
+
+    @Override
+    public void start(Stage primaryStage) {
+        chk2.setSelected(true);//设置"斜体"复选框为选中状态
+        VBox vbL=new VBox(3);//创建组件间距为3的单列面板
+        vbL.getChildren().addAll(chk1,chk2,chk3);
+        rb1.setSelected(true);//设置红色单选按钮为选中状态
+        final ToggleGroup group=new ToggleGroup();
+        rb1.setToggleGroup(group);//将单选按钮加入按钮组,使得各单选按钮具有互斥性
+        rb2.setToggleGroup(group);
+        rb3.setToggleGroup(group);
+        VBox vbR=new VBox(3);//创建组件间距为3的单列面板
+        vbR.getChildren().addAll(rb1,rb2,rb3);
+        HBox hB= new HBox(20);//创建组件间距为20的单行面板
+        hB.getChildren().addAll(bt1,bt2);
+        hB.setAlignment(Pos.CENTER);//设置单行面板中的节点居中对齐
+        BorderPane rootBP=new BorderPane();//创建边界面板作为根面板
+        ta.setPrefColumnCount(10);//设置文本区的显示宽度为10列
+        ta.setPrefRowCount(3); //设置文本区的显示高度为3行
+        ta.setWrapText(true);//设置文本区是否自动换行
+        rootBP.setLeft(vbL);//放在边界面板的左部区域
+        rootBP.setRight(vbR);
+        rootBP.setCenter(ta);
+        rootBP.setBottom(hB);
+        Scene scene=new Scene(rootBP);
+        primaryStage.setTitle("复选框与单选按钮");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+}
